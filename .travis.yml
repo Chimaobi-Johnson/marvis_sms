@@ -1,12 +1,13 @@
-language: generic
 sudo: required
+language: generic
+
 services:
   - docker
 before_install:
   - docker build -t 2553/marvis_sms_test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true 2553/marvis_sms_client npm test -- --coverage
+  - docker run -e CI=true 2553/marvis_sms_client npm test
 
 after_success:
   - docker build -t 2553/marvis_sms_client ./client
