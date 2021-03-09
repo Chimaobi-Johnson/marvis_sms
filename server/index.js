@@ -75,7 +75,13 @@ app.get('/', (req, res) => {
 })
 
 // app.use(authRoutes);
-
+// mongodb:
+// image : mongo
+// environment: 
+//   MONGO_INITDB_ROOT_USERNAME: root
+//   MONGO_INITDB_ROOT_PASSWORD: rootpassword
+// ports:
+//   - 27017:27017
 app.use((error, req, res, next) => {
   console.log(error);
   res

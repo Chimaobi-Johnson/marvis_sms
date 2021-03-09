@@ -19,3 +19,15 @@ after_success:
   - docker push 2553/marvis_sms_client
   - docker push 2553/marvis_sms_nginx
   - docker push 2553/marvis_sms_server
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-west-2'
+  app: 'marvis_sms'
+  env: 'Marvissms-env'
+  bucket_name: 'elasticbeanstalk-eu-west-2-962574408926'
+  bucket_path: 'marvis_student_mgt_sys'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
