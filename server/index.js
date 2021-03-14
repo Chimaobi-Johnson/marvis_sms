@@ -88,7 +88,7 @@ app.use((error, req, res, next) => {
     .status(error.httpStatusCode)
     .json({ message: "An error occured, please try again" });
 });
-
+console.log(keys);
 mongoose
   .connect(keys.mongoURI)
   .then((connect) => {
