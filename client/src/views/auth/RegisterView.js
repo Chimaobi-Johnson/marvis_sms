@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
@@ -14,6 +14,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,8 +26,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegisterView = () => {
+  const regData = useSelector(state => state.authReducer.adminAuth.register);
+  console.log(regData);
   const classes = useStyles();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   return (
     <Page
@@ -57,8 +62,9 @@ const RegisterView = () => {
                 policy: Yup.boolean().oneOf([true], 'This field must be checked')
               })
             }
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+            onSubmit={(data) => {
+              console.log(data);
+              // navigate('/app/dashboard', { replace: true });
             }}
           >
             {({

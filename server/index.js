@@ -17,11 +17,11 @@ const app = express();
 const keys = require("./config/keys");
 
 // app models
-// require('./models/User');
+require('./models/User');
 require('./services/passport');
 
 // app routes
-// const authRoutes = require('./routes/authRoutes');
+const adminAuthRoutes = require('./routes/admin/auth');
 
 
 const storage = multer.diskStorage({
@@ -47,8 +47,10 @@ app.use(cookieSession({
   keys: [keys.cookieKey]
 }))
 
-// app.use(passport.initialize())
-// app.use(passport.session())
+app.use('/admin', adminAuthRoutes);
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 // app.use(express.static(path.join(__dirname, 'client/build')))
 
