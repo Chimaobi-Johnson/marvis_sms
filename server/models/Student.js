@@ -83,7 +83,10 @@ const userSchema = new Schema({
     // changes password
     currentCourses: [],
     academicYear: String,
-    hobbies: []
+    hobbies: [],
+    grades: {
+        ref: 'Grade' // goto grade and find using course id
+    }
 }, {timestamps: true});
 
 userSchema.plugin(uniqueValidator);
