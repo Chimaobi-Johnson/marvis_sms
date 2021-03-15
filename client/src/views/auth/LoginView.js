@@ -15,6 +15,7 @@ import {
 import FacebookIcon from 'src/icons/Facebook';
 import GoogleIcon from 'src/icons/Google';
 import Page from 'src/components/Page';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginView = () => {
+  const loginData = useSelector(state => state.authReducer.adminAuth.login);
+  console.log(loginData);
   const classes = useStyles();
   const navigate = useNavigate();
 

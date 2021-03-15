@@ -14,6 +14,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegisterView = () => {
+  const regData = useSelector(state => state.authReducer.adminAuth.register);
+  console.log(regData);
   const classes = useStyles();
   // const navigate = useNavigate();
 
